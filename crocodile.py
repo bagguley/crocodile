@@ -16,24 +16,17 @@ def ping():
     p.digital_write(7,0)
     
     # Time the echo
-    #print("Time the echo")
     start=time.time()
     while p.digital_read(0)==1:
        if (time.time()-start)>0.2:
           break
     start=time.time()
     
-    #print(pfd.input_pins[0].value)
-    #print("Start")
-    
     stop=time.time()
     while p.digital_read(0)==0:
         if (time.time()-stop)>0.2:
             break
     stop=time.time()
-    
-    #print(pfd.input_pins[0].value)
-    #print("Stop")
     
     elapsed=stop-start
     
