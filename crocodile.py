@@ -37,7 +37,7 @@ def ping():
     
     elapsed=stop-start
     
-    distance=(34290/2) * elapsed
+    distance=(34029/2) * elapsed
     
     if (distance < 400):
         print("Distance {:.1f}".format(distance))
