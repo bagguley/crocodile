@@ -1,4 +1,5 @@
 import sys
+import errno
 import signal
 import time
 import pifacedigitalio
