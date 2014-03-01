@@ -4,6 +4,9 @@ import signal
 import time
 import pifacedigitalio
 
+def timeup
+def timedown
+
 def echo_up(event):
    timeup=event.timestamp
 
@@ -34,8 +37,8 @@ time.sleep(0.5)
 listener.activate()
 
 while exit==False:
-   timeup=0
-   timedown=0
+   timeup=0.0
+   timedown=0.0
    ping()
    print(timedown-timeup)
 
