@@ -40,7 +40,7 @@ while exit==False:
    timeup[0]=0.0
    timedown[0]=0.0
    ping()
-   print(timedown[0])
+   print(timedown[0]-timeup[0])
 
 listener.deactivate()
 p.deinit()
