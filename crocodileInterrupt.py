@@ -5,17 +5,17 @@ import time
 import pifacedigitalio
 
 def echo_up(event):
-   print("up")
+   timeup=event.timestamp
 
 def echo_down(event):
-   print("down")
+   timedown=event.timestamp
 
 def ping():
     # Send 10us pulse to trigger
     p.output_pins[7].value=1
     time.sleep(0.00001)
     p.output_pins[7].value=0
-    time.sleep(0.05)
+    time.sleep(0.5)
 
 def handler(signum, frame):
     exit=True
@@ -34,7 +34,10 @@ time.sleep(0.5)
 listener.activate()
 
 while exit==False:
+   timeup=0
+   timedown=0
    ping()
+   print(timedown-timeup)
 
 listener.deactivate()
 p.deinit()
