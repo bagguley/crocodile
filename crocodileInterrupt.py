@@ -20,27 +20,27 @@ def ping():
     p.output_pins[7].value=0
     time.sleep(0.5)
 
-def handler(signum, frame):
-    exit=True
-
-signal.signal(signal.SIGINT, handler)
-
 exit = False
 p = pifacedigitalio.PiFaceDigital()
-listener = pifacedigitalio.InputEventListener(chip=p)
-listener.register(0, pifacedigitalio.IODIR_OFF, echo_up, 0.001)
-listener.register(0, pifacedigitalio.IODIR_ON, echo_down, 0.001)
+uplistener = pifacedigitalio.InputEventListener(chip=p)
+downlistener = pifacedigitalio.InputEventListener(chip=p)
+uplistener.register(0, pifacedigitalio.IODIR_OFF, echo_up, 0.001)
+downlistener.register(0, pifacedigitalio.IODIR_ON, echo_down, 0.001)
 
 p.output_pins[7].value=0
 time.sleep(0.5)
 
-listener.activate()
+uplistener.activate()
+downlistener.activate()
 
 while exit==False:
    timeup[0]=0.0
    timedown[0]=0.0
    ping()
    print(((34029/2)*(timedown[0]-timeup[0]))/1000)
+   if (p.input_pins[1].value==1:
+      exit=True
 
-listener.deactivate()
-p.deinit()
+uplistener.deactivate()
+downlisener.deactivate()
+p.deinit_board()
