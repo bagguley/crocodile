@@ -4,8 +4,8 @@ import signal
 import time
 import pifacedigitalio
 
-def timeup
-def timedown
+timeup=0.0
+timedown=0.0
 
 def echo_up(event):
    timeup=event.timestamp
