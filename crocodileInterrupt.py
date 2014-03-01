@@ -38,7 +38,7 @@ while exit==False:
    timedown[0]=0.0
    ping()
    print(((34029/2)*(timedown[0]-timeup[0]))/1000)
-   if (p.input_pins[1].value==1:
+   if (p.input_pins[1].value==1):
       exit=True
 
 uplistener.deactivate()
