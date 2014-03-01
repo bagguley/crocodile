@@ -9,11 +9,9 @@ timedown=0.0
 
 def echo_up(event):
    timeup=event.timestamp
-   print(timeup)
 
 def echo_down(event):
    timedown=event.timestamp
-   print(timedown)
 
 def ping():
     # Send 10us pulse to trigger
@@ -42,7 +40,7 @@ while exit==False:
    timeup=0.0
    timedown=0.0
    ping()
-   print(timedown-timeup)
+   print(timedown)
 
 listener.deactivate()
 p.deinit()
