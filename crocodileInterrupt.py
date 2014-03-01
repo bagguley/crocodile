@@ -1,4 +1,5 @@
 import sys
+import time
 import pifacedigitalio
 
 def echo_up(event):
