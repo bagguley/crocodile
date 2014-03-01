@@ -7,10 +7,10 @@ listener.register(0, pifacedigitalio.IODIR_OFF, echo_up, 0.0001)
 listener.register(0, pifacedigitalio.IODIR_ON, echo_down, 0.0001)
 
 
-def echo_up():
+def echo_up(event):
    print("up")
 
-def echo_down():
+def echo_down(event):
    print("down")
 
 def ping():
