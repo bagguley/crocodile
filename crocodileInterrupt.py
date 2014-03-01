@@ -8,10 +8,10 @@ timeup=0.0
 timedown=0.0
 
 def echo_up(event):
-   timeup=event.timestamp
+   timeup=time.time()
 
 def echo_down(event):
-   timedown=event.timestamp
+   timedown=time.time()
 
 def ping():
     # Send 10us pulse to trigger
