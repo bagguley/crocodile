@@ -1,12 +1,6 @@
 import sys
 import pifacedigitalio
 
-p = pifacedigitalio.PiFaceDigital()
-listener = pifacedigitalio.InputEventListener(chip=p)
-listener.register(0, pifacedigitalio.IODIR_OFF, echo_up, 0.0001)
-listener.register(0, pifacedigitalio.IODIR_ON, echo_down, 0.0001)
-
-
 def echo_up(event):
    print("up")
 
@@ -19,6 +13,11 @@ def ping():
     time.sleep(0.00001)
     pifacedigitalio.digital_write(7,0)
     time.sleep(0.05)
+
+p = pifacedigitalio.PiFaceDigital()
+listener = pifacedigitalio.InputEventListener(chip=p)
+listener.register(0, pifacedigitalio.IODIR_OFF, echo_up, 0.0001)
+listener.register(0, pifacedigitalio.IODIR_ON, echo_down, 0.0001)
 
 p.output_pins[7]=0
 time.sleep(0.5)
