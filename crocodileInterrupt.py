@@ -24,8 +24,8 @@ exit = False
 p = pifacedigitalio.PiFaceDigital()
 uplistener = pifacedigitalio.InputEventListener(chip=p)
 downlistener = pifacedigitalio.InputEventListener(chip=p)
-uplistener.register(0, pifacedigitalio.IODIR_OFF, echo_up, 0.001)
-downlistener.register(0, pifacedigitalio.IODIR_ON, echo_down, 0.001)
+uplistener.register(0, pifacedigitalio.IODIR_OFF, echo_up, 0.0001)
+downlistener.register(0, pifacedigitalio.IODIR_ON, echo_down, 0.0001)
 
 p.output_pins[7].value=0
 time.sleep(0.5)
@@ -42,5 +42,5 @@ while exit==False:
       exit=True
 
 uplistener.deactivate()
-downlisener.deactivate()
+downlistener.deactivate()
 p.deinit_board()
