@@ -4,14 +4,14 @@ import signal
 import time
 import pifacedigitalio
 
-timeup=0.0
-timedown=0.0
+timeup=[0]
+timedown=[0]
 
 def echo_up(event):
-   timeup=time.time()
+   timeup[0]=time.time()
 
 def echo_down(event):
-   timedown=time.time()
+   timedown[0]=time.time()
 
 def ping():
     # Send 10us pulse to trigger
@@ -37,10 +37,10 @@ time.sleep(0.5)
 listener.activate()
 
 while exit==False:
-   timeup=0.0
-   timedown=0.0
+   timeup[0]=0.0
+   timedown[0]=0.0
    ping()
-   print(timedown)
+   print(timedown[0])
 
 listener.deactivate()
 p.deinit()
