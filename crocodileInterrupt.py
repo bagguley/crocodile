@@ -19,6 +19,7 @@ p = pifacedigitalio.PiFaceDigital()
 listener = pifacedigitalio.InputEventListener(chip=p)
 listener.register(0, pifacedigitalio.IODIR_OFF, echo_up, 0.0001)
 listener.register(0, pifacedigitalio.IODIR_ON, echo_down, 0.0001)
+listener.activate()
 
 p.output_pins[7].value=0
 time.sleep(0.5)
