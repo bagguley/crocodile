@@ -8,9 +8,22 @@ run = True
 def init():
     # Set trigger to 0
     p.output_pins[7].value=0
+    p.output_pins[6].value=1
+    p.output_pins[5].value=1
     
     # Allow module to settle
     time.sleep(0.5)
+
+def snap():
+    print("SNAP!")
+    p.output_pins[6].value=0
+    time.sleep(0.5)
+    p.output_pins[6].value=1
+    time.sleep(0.5)
+    p.output_pins[5].value=0
+    time.sleep(0.5)
+    p.output_pins[5].value=1
+    time.sleep(2.0)
 
 def ping():
     # Send 10us pulse to trigger
@@ -37,16 +50,25 @@ def ping():
     
     distance=(34029/2) * elapsed
     
-    print("Distance {:.4f}cm".format(distance))
-    
-    time.sleep(0.5)
+    time.sleep(0.3)
     return distance
 
 p.gppub.bits[0].value=0
 p.output_pins[6].value=1
 init()
+previousT = 100
+count = 0
 while run==True:
     t = ping()
+    if (t == 0):
+       count +=1
+    else:
+       count = 0
+
+    if (count > 3):
+       snap()
+
+    print("Distance {:.4f}cm".format(t))
     if (p.input_pins[1].value==1):
       run=False
 p.deinit_board()
