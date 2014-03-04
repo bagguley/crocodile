@@ -24,28 +24,29 @@ def ping():
     while p.input_pins[0].value==1:
        start=time.time()
        if (start-begin>0.2):
-          break
+          return -1
     
     stop=start
     begin=stop
     while p.input_pins[0].value==0:
         stop=time.time()
         if (stop-begin>0.2):
-            break
+            return -2
     
     elapsed=stop-start
     
     distance=(34029/2) * elapsed
     
-    if (distance < 400):
-       print("Distance {:.4f}cm".format(distance))
+    print("Distance {:.4f}cm".format(distance))
     
     time.sleep(0.5)
+    return distance
 
 p.gppub.bits[0].value=0
+p.output_pins[6].value=1
 init()
 while run==True:
-    ping()
+    t = ping()
     if (p.input_pins[1].value==1):
       run=False
 p.deinit_board()
